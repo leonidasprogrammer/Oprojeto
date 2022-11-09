@@ -1,4 +1,7 @@
+
+
 .container{
+  margin-top: 11px;
   display: flex;
   background-color: #f8f8f8;
   border-radius: 5px;
@@ -7,7 +10,10 @@
   margin-bottom: 1em;
   border: 1px solid #d8d5e6;
   box-shadow: -1px 8px 12px -7px #b1b1b1;
+ 
 }
+
+
 
 .label-avatar{
   width: 280px;
@@ -61,4 +67,15 @@
 
 .form-profile button{
   max-width: 600px;
+}
+
+.logout-btn{
+  padding: 8px 20px;
+  background-color: transparent;
+  border: 1px solid #121212;
+  border-radius: 5px;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

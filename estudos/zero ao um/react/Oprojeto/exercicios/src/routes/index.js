@@ -8,6 +8,7 @@ import WhatchLogin from './WhatchLogin'
 const Dashboard = React.lazy(() => import('../Pages/Dashboard'))
 const Profile = React.lazy(() => import('../Pages/Profiles'))
 const Customers = React.lazy(() => import('../Pages/Customers'))
+const New = React.lazy(() => import('../Pages/New'))
 
 const Rotas = () => {
   return (
@@ -47,6 +48,28 @@ const Rotas = () => {
           element={
             <Suspense fallback={<div>Loading...</div>}>
               <Customers />
+            </Suspense>
+          }
+        />
+      </Route>
+
+      <Route path="/new" element={<PrivateOutlet />}>
+        <Route
+          path="/new"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <New />
+            </Suspense>
+          }
+        />
+      </Route>
+
+      <Route path="/new/:id" element={<PrivateOutlet />}>
+        <Route
+          path="/new/:id"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <New />
             </Suspense>
           }
         />

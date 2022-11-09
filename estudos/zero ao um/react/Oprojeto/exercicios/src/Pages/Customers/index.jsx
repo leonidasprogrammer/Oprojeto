@@ -4,7 +4,7 @@ import Title from '../../components/Title';
 import Header from '../../components/Header';
 import { FiUser } from 'react-icons/fi';
 import { db } from '../../services/firebaseConnection';
-import { doc, setDoc } from 'firebase/firestore';
+import { addDoc, collection } from 'firebase/firestore';
 import { AuthContext } from '../../contexts/auth';
 import { toast } from 'react-toastify'
 
@@ -12,7 +12,7 @@ const Customers = () => {
   const [nomeFantasia, setNomeFantasia] = useState('');
   const [cnpj, setCnpj] = useState('');
   const [endereco, setEndereco] = useState('');
-  const { user:{ id }, setLoading } = useContext(AuthContext);
+  const { setLoading } = useContext(AuthContext);
 
   async function handleAdd(e){
     console.log('chegou ou n')
@@ -20,7 +20,7 @@ const Customers = () => {
     if(nomeFantasia !== '' && cnpj !== '' && endereco !== ''){
       console.log('chegou até aqui')
       setLoading(true);
-      await setDoc(doc(db, 'cities', id),{
+      await addDoc(collection(db, 'custumers'),{
         nomeFantasia: nomeFantasia,
         cnpj: cnpj,
         endereco: endereco
@@ -48,7 +48,7 @@ const Customers = () => {
         <div className="container">
           <form className="form-profile customers" onSubmit={() => handleAdd()}>
             <label>Nome fantasia</label>
-            <input type="text" placeholder="Nome da sua empresa" value={nomeFantasia} onChange={ (e) => setNomeFantasia}/>
+            <input type="text" placeholder="Nome da sua empresa" value={nomeFantasia} onChange={ (e) => setNomeFantasia(e.target.value)}/>
 
             <label>CNPJ</label>
             <input type="text" placeholder="Seu CNPJ" value={cnpj} onChange={ (e) => setCnpj(e.target.value)} />
@@ -64,7 +64,6 @@ const Customers = () => {
     </div>
   )
 }
-
 
 
 export default Customers;

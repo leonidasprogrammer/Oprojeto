@@ -10,6 +10,7 @@ import { doc, updateDoc} from 'firebase/firestore';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
 import { toast } from 'react-toastify'
 
+
 const Profile = () => {
   const { user, logout, setUser, storageUser, setLoading} = useContext(AuthContext);
 
@@ -22,7 +23,7 @@ const Profile = () => {
     if(e.target.files[0]){
       const image = e.target.files[0];
      
-      if(image.type === 'image/jpeg' || image.tupe === 'image/png'){
+      if(image.type === 'image/jpeg' || image.type === 'image/png'){
         setImageAvatar(image);
         const UrlImage = URL.createObjectURL(image);
         setAvatarUrl(UrlImage);
@@ -139,7 +140,7 @@ const Profile = () => {
 
            <div className="container">
             <button className="logout-btn" onClick={ () => logout() } >
-              Sair
+              <h2>    Sair   </h2>   
             </button>
            </div>
        </div>
